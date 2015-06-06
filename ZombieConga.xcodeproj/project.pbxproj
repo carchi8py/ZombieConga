@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274A3DD71B2374AD00D8584E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 274A3DD61B2374AD00D8584E /* Images */; };
+		274A3DDB1B2374CF00D8584E /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 274A3DDA1B2374CF00D8584E /* sprites.atlas */; };
 		27EC3D841B228003004042B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EC3D831B228003004042B2 /* AppDelegate.swift */; };
 		27EC3D881B228003004042B2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EC3D871B228003004042B2 /* GameScene.swift */; };
 		27EC3D8A1B228003004042B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EC3D891B228003004042B2 /* GameViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		274A3DD61B2374AD00D8584E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		274A3DDA1B2374CF00D8584E /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		27EC3D7E1B228003004042B2 /* ZombieConga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieConga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EC3D821B228003004042B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27EC3D831B228003004042B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				27EC3D8B1B228003004042B2 /* Main.storyboard */,
 				27EC3D8E1B228003004042B2 /* Images.xcassets */,
 				27EC3D901B228003004042B2 /* LaunchScreen.xib */,
+				274A3DDA1B2374CF00D8584E /* sprites.atlas */,
+				274A3DD61B2374AD00D8584E /* Images */,
 				27EC3D811B228003004042B2 /* Supporting Files */,
 			);
 			path = ZombieConga;
@@ -195,6 +201,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274A3DDB1B2374CF00D8584E /* sprites.atlas in Resources */,
+				274A3DD71B2374AD00D8584E /* Images in Resources */,
 				27EC3D921B228003004042B2 /* LaunchScreen.xib in Resources */,
 				27EC3D8F1B228003004042B2 /* Images.xcassets in Resources */,
 				27EC3D8D1B228003004042B2 /* Main.storyboard in Resources */,
