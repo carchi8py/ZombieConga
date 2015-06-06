@@ -15,6 +15,13 @@ class GameScene: SKScene {
         //Set the background for the game
         let background = SKSpriteNode(imageNamed: "images/background1")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.zPosition = -1
         addChild(background)
+        
+        //Adding a zombie to the game
+        let zombie = SKSpriteNode(imageNamed: "zombie1")
+        zombie.position = CGPoint(x: 400, y: 400)
+        zombie.zPosition = 1
+        addChild(zombie)
     }
 }
