@@ -22,6 +22,9 @@ class GameScene: SKScene {
         let zombie = SKSpriteNode(imageNamed: "zombie1")
         zombie.position = CGPoint(x: 400, y: 400)
         zombie.zPosition = 1
+        //Make the zombie 2 timex larger
+        zombie.xScale = 2.0
+        zombie.yScale = 2.0
         addChild(zombie)
     }
 }
