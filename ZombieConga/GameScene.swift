@@ -61,6 +61,7 @@ class GameScene: SKScene {
         }
         lastUpdateTime = currentTime
         boundsCheckZombie()
+        rotatedSprite(zombie, direction: velocity)
         
         println("\(dt*1000) milliseconds since last update")
     }
@@ -101,6 +102,11 @@ class GameScene: SKScene {
         let touch = touches.first as! UITouch
         let touchLocation = touch.locationInNode(self)
         sceneTouched(touchLocation)
+    }
+    
+    //Roate the Zombie in the direction he is going
+    func rotatedSprite(sprite: SKSpriteNode, direction: CGPoint) {
+        sprite.zRotation = CGFloat(atan2(Double(direction.y), Double(direction.x)))
     }
     
     //Function to bound check the Zombie so it dosn't run off the screne
