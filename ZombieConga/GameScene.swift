@@ -41,6 +41,8 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
+        boundsCheckZombie()
+        
         println("\(dt*1000) milliseconds since last update")
     }
     
@@ -80,5 +82,29 @@ class GameScene: SKScene {
         let touch = touches.first as! UITouch
         let touchLocation = touch.locationInNode(self)
         sceneTouched(touchLocation)
+    }
+    
+    //Function to bound check the Zombie so it dosn't run off the screne
+    
+    func boundsCheckZombie() {
+        let bottomLeft = CGPointZero
+        let topRight = CGPoint(x: size.width, y: size.height)
+        
+        if zombie.position.x <= bottomLeft.x {
+            zombie.position.x = bottomLeft.x
+            velocity.x = -velocity.x
+        }
+        if zombie.position.x >= topRight.x {
+            zombie.position.x = topRight.x
+            velocity.x = -velocity.x
+        }
+        if zombie.position.y <= bottomLeft.y {
+            zombie.position.y = bottomLeft.y
+            velocity.y = -velocity.y
+        }
+        if zombie.position.y >= topRight.y {
+            zombie.position.y = topRight.y
+            velocity.y = -velocity.y
+        }
     }
 }
