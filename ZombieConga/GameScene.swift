@@ -44,11 +44,23 @@ class GameScene: SKScene {
         println("\(dt*1000) milliseconds since last update")
     }
     
+    //Move the zombie at zombieMovePointsPerSec per second
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = CGPoint(x: velocity.x * CGFloat(dt),
                                    y: velocity.y * CGFloat(dt))
         println("Amount to move: \(amountToMove)")
         sprite.position = CGPoint(x: sprite.position.x + amountToMove.x,
                                   y: sprite.position.y + amountToMove.y)
+    }
+    
+    //Moves the zombie towards a location
+    func moveZombieToward(location: CGPoint) {
+        let offset = CGPoint(x: location.x - zombie.position.x,
+                             y: location.y - zombie.position.y)
+        let length = sqrt(Double(offset.x * offset.x + offset.y * offset.y))
+        let direction = CGPoint(x: offset.x / CGFloat(length),
+                              y: offset.y / CGFloat(length))
+        velocity = CGPoint(x: direction.x * zombieMovePointsPerSec,
+                           y: direction.y * zombieMovePointsPerSec)
     }
 }
