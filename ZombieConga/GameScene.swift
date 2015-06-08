@@ -33,7 +33,7 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-        moveSprite(zombie, velocity: CGPoint(x: zombieMovePointsPerSec, y: 0))
+        moveSprite(zombie, velocity: velocity)
         
         if lastUpdateTime > 0 {
             dt = currentTime - lastUpdateTime
@@ -62,5 +62,23 @@ class GameScene: SKScene {
                               y: offset.y / CGFloat(length))
         velocity = CGPoint(x: direction.x * zombieMovePointsPerSec,
                            y: direction.y * zombieMovePointsPerSec)
+    }
+    
+    //Function for moving zombie based on touching
+    
+    func sceneTouched(touchLocation:CGPoint) {
+        moveZombieToward(touchLocation)
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
+        let touchLocation = touch.locationInNode(self)
+        sceneTouched(touchLocation)
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
+        let touchLocation = touch.locationInNode(self)
+        sceneTouched(touchLocation)
     }
 }
