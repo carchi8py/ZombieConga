@@ -15,6 +15,22 @@ class GameScene: SKScene {
     var dt: NSTimeInterval = 0
     let zombieMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPointZero
+    let playableRect: CGRect
+    
+    override init(size: CGSize) {
+        //This is the largest aspect ratios the game supports
+        let maxAspectRatio: CGFloat = 16.0/9.0
+        let playableHeight = size.width / maxAspectRatio
+        let playableMargin = (size.height - playableHeight) / 2.0
+        //The Playable Rectagle. For Iphone this will be smaller than ipads
+        playableRect = CGRect(x: 0, y: playableMargin, width: size.width,
+                              height: playableHeight)
+        super.init(size: size)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMoveToView(view: SKView) {
         backgroundColor = SKColor.whiteColor()
@@ -29,6 +45,9 @@ class GameScene: SKScene {
         zombie.position = CGPoint(x: 400, y: 400)
         zombie.zPosition = 1
         addChild(zombie)
+        
+        //debug function
+        debugDrawPlayableArea()
         
     }
     
@@ -87,8 +106,8 @@ class GameScene: SKScene {
     //Function to bound check the Zombie so it dosn't run off the screne
     
     func boundsCheckZombie() {
-        let bottomLeft = CGPointZero
-        let topRight = CGPoint(x: size.width, y: size.height)
+        let bottomLeft = CGPoint(x: 0, y: CGRectGetMinY(playableRect))
+        let topRight = CGPoint(x: size.width, y: CGRectGetMaxY(playableRect))
         
         if zombie.position.x <= bottomLeft.x {
             zombie.position.x = bottomLeft.x
@@ -106,5 +125,17 @@ class GameScene: SKScene {
             zombie.position.y = topRight.y
             velocity.y = -velocity.y
         }
+    }
+    
+    
+    //DEBUG FUNCTIONS
+    func debugDrawPlayableArea() {
+        let shape = SKShapeNode()
+        let path = CGPathCreateMutable()
+        CGPathAddRect(path, nil, playableRect)
+        shape.path = path
+        shape.strokeColor = SKColor.redColor()
+        shape.lineWidth = 4.0
+        addChild(shape)
     }
 }
